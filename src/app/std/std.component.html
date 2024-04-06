@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" #fname class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="fname">Last Name</label>
+            <input type="text" id="lname" #lname class="form-control">
+        </div> 
+        <div class="form-group">
+            <label for="fname">Email</label>
+            <input type="text" id="email" #email class="form-control">
+        </div> 
+        <div class="form-group">
+            <label for="fname">Contact</label>
+            <input type="text" id="contact" #contact class="form-control">
+        </div>
+        <button class="btn btn-success btn-block"
+        (click)="onStdAdd(fname, lname, email, contact)"
+        >Add Student</button>         
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered" *ngIf="stdArr.length > 0; else noStdData">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of stdArr; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{std.fname}}</td>
+                    <td>{{std.lname}}</td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.contact}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #noStdData>
+            <p class="alert alert-warning">
+                No Student Data is Available...
+            </p>
+        </ng-template>
+
+    </div>
+</div>
